@@ -6,7 +6,10 @@ class SiteController {
   static async home(req, res) {
     async function getAllTasks() {
       try {
-        const courses = await Course.findAll({ raw: true });
+        const courses = await sequelize.query("SELECT * FROM courses", {
+          type: sequelize.QueryTypes.SELECT,
+          raw: true,
+        });
         return courses;
       } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -14,7 +17,7 @@ class SiteController {
       }
     }
     var data = await getAllTasks();
-
+    // res.json({ data });
     res.render("home", { data });
   }
 

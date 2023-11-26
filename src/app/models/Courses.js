@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    course_image: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
   });
 
   return Course;
