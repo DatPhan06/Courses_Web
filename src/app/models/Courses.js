@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   const Course = sequelize.define("courses", {
     course_id: {
@@ -28,6 +29,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+
+  // Đồng bộ hóa model với cơ sở dữ liệu để tạo bảng
+  Course.sync({ force: false }) // force: true sẽ xóa bảng cũ (nếu có) và tạo lại
+    .then(() => {
+      console.log("Bảng đã được tạo hoặc đồng bộ hóa thành công.");
+    })
+    .catch((error) => {
+      console.error("Đã xảy ra lỗi khi đồng bộ hóa bảng:", error);
+    });
 
   return Course;
 };
