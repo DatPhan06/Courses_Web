@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 // tạo 1 phiên bản sequelize kết nối mysql
-const sequelize = new Sequelize("courses_web", "root", "", {
+const sequelize = new Sequelize("courses", "root", "", {
   host: "localhost",
   dialect: "mysql",
 });
